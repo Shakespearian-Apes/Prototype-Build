@@ -15,6 +15,6 @@ func _process(delta):
 			var enemy_position = enemy.get_global_position()
 			var velocity = (player_position - enemy_position).normalized()
 			if enemy_position.distance_to(player_position) <= 50:
-				return
+				enemy.attack()
 			else:
 				enemy.move_and_slide(velocity * 200)
