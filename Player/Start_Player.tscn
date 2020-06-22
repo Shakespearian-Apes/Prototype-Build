@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Player_Sprites/witch_fighter.png" type="Texture" id=1]
 [ext_resource path="res://Player/Start_Player.gd" type="Script" id=2]
+[ext_resource path="res://Player/StateMachine/PlayerSM.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.96968, 14.2452 )
@@ -46,7 +47,7 @@ script = ExtResource( 2 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 hframes = 11
-frame = 8
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
@@ -69,4 +70,6 @@ shape = SubResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Walking = SubResource( 3 )
 anims/idle = SubResource( 4 )
+
+[node name="PlayerSM" parent="." instance=ExtResource( 3 )]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
