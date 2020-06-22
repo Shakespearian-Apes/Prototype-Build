@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Enemies/Speedster/Speed_Enemy.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Weapons/laser_ninja_sword.png" type="Texture" id=3]
+[ext_resource path="res://Enemies/StateMachine/EnemySM.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 28.0751, 5.30048 )
@@ -81,5 +82,7 @@ shape = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 5 )
+
+[node name="EnemySM" parent="." instance=ExtResource( 4 )]
 [connection signal="area_entered" from="Player_Detection" to="." method="_on_Player_Detection_area_entered"]
 [connection signal="area_exited" from="Player_Detection" to="." method="_on_Player_Detection_area_exited"]

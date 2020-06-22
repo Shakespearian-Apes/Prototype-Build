@@ -13,15 +13,21 @@ _global_script_classes=[ {
 "class": "PlayerState",
 "language": "GDScript",
 "path": "res://Player/StateMachine/Player_State.gd"
+}, {
+"base": "Node",
+"class": "PlayerStateMachine",
+"language": "GDScript",
+"path": "res://Player/StateMachine/PlayerSM.gd"
 } ]
 _global_script_class_icons={
-"PlayerState": ""
+"PlayerState": "",
+"PlayerStateMachine": ""
 }
 
 [application]
 
 config/name="Redemption"
-run/main_scene="res://Levels/Test_Level.tscn"
+run/main_scene="res://Root.tscn"
 config/icon="res://icon.png"
 
 [layer_names]
