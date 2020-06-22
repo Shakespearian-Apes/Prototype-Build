@@ -4,6 +4,7 @@
 [ext_resource path="res://Enemies/Speedster/Speed_Enemy.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Weapons/laser_ninja_sword.png" type="Texture" id=3]
 [ext_resource path="res://Enemies/StateMachine/EnemySM.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Weapon/Sword/Sword.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 28.0751, 5.30048 )
@@ -17,23 +18,9 @@ radius = 469.119
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 61.1938, 62.0497 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "attack"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite/Sword:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ -84.7706, 76.2405 ]
-}
-
-[node name="Speed_Enemy" type="KinematicBody2D"]
+[node name="Speed_Enemy" type="KinematicBody2D" groups=[
+"character",
+]]
 scale = Vector2( 0.3, 0.3 )
 collision_layer = 4
 collision_mask = 4
@@ -43,6 +30,7 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 
 [node name="Sword" type="Sprite" parent="Sprite"]
+visible = false
 position = Vector2( 62.7536, -0.833542 )
 rotation = -1.47953
 scale = Vector2( 2.5, 2.5 )
@@ -80,9 +68,10 @@ collision_mask = 128
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chip_Detection"]
 shape = SubResource( 4 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 5 )
-
 [node name="EnemySM" parent="." instance=ExtResource( 4 )]
+
+[node name="Sword" parent="." instance=ExtResource( 5 )]
+position = Vector2( 65, 4 )
+scale = Vector2( 3, 3 )
 [connection signal="area_entered" from="Player_Detection" to="." method="_on_Player_Detection_area_entered"]
 [connection signal="area_exited" from="Player_Detection" to="." method="_on_Player_Detection_area_exited"]

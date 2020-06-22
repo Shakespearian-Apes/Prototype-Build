@@ -10,8 +10,9 @@ func _ready():
 	pass
 
 func _process(delta):
-	get_variables()
-	player_hurt()
+	pass
+	# get_variables()
+	# player_hurt()
 
 func player_hurt():
 	if player_health <= 0:

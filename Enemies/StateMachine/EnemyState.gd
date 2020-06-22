@@ -8,7 +8,7 @@ var enemy
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	enemy = get_parent().get_parent()
-	connect("setPlayer", self, "set_new_player_node")
+	get_node("/root/Root").connect("setPlayer", self, "set_new_player_node")
 	set_player_node()
 
 

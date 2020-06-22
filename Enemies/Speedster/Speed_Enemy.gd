@@ -2,10 +2,13 @@ extends KinematicBody2D
 
 var see_player = false
 var player
+var attack_ready = true;
 
 func _on_Player_Detection_area_entered(area):
 	see_player = true
 
+func _ready():
+	$Sword.connect("AttackFinished", self, "reset_attack")
 
 func _on_Player_Detection_area_exited(area):
 	see_player = false
@@ -23,4 +26,10 @@ func set_animation():
 		$Sprite.set_scale(Vector2(1,1))
 
 func attack():
-	$AnimationPlayer.play("attack")
+	if not attack_ready:
+		return
+	$Sword._change_state("attack")
+	# $AnimationPlayer.play("attack")
+
+func reset_attack():
+	attack_ready = true;
