@@ -2,6 +2,7 @@ extends Node
 
 
 signal setPlayer
+signal playerDead
 
 var player_node
 
@@ -15,3 +16,6 @@ func _ready():
 func set_player(new):
 	player_node = new
 	emit_signal("setPlayer", player_node)
+
+func player_dead(node):
+	emit_signal("playerDead", node)

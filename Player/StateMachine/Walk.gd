@@ -7,11 +7,12 @@ func update_process(machine, delta):
 	velocity = input_direction.normalized() * player.get_parent().MAX_SPEED
 	velocity = player.move_and_slide(velocity)
 
+	##enemys are missing these animation
 	if velocity.x > 0:
 		player.get_node("Sprite").flip_h = false
-		player.get_node("AnimationPlayer").play("Walking")
+		# player.get_node("AnimationPlayer").play("Walking")
 	elif velocity.x < 0:
 		player.get_node("Sprite").flip_h = true
-		player.get_node("AnimationPlayer").play("Walking")
-	elif velocity.y != 0:
-		player.get_node("AnimationPlayer").play("Walking")
+		# player.get_node("AnimationPlayer").play("Walking")
+	# elif velocity.y != 0:
+		# player.get_node("AnimationPlayer").play("Walking")

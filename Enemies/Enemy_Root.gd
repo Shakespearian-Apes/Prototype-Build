@@ -1,5 +1,8 @@
 extends Node
 
+const MAX_SPEED = 500
+const ACCELERATION = 100
+const FRICTION = 100
 # var player
 
 # func _ready():

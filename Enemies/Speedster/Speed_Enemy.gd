@@ -14,8 +14,9 @@ func _on_Player_Detection_area_exited(area):
 	see_player = false
 
 func _physics_process(delta):
-	player = get_node_or_null("../../Player_Root").get_child(0)
-	set_animation()
+	pass
+	# player = get_node_or_null("../../Player_Root").get_child(0)
+	# set_animation()
 
 func set_animation():
 	if player.get_global_position().x > get_global_position().x:
