@@ -3,9 +3,12 @@ extends KinematicBody2D
 var see_player = false
 var player
 var attack_ready = true;
+
+const MAX_HEALTH = 3;
 const MAX_SPEED = 500
 const ACCELERATION = 100
 const FRICTION = 100
+onready var health = MAX_HEALTH
 
 func _on_Player_Detection_area_entered(area):
 	see_player = true
@@ -37,3 +40,7 @@ func attack():
 
 func reset_attack():
 	attack_ready = true;
+
+# relays the Damage handling to the StateMachine
+func take_damage(dmg : int, enemy: Node)->void:
+	emit_signal("got_hit",dmg, enemy)

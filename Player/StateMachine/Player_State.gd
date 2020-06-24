@@ -8,6 +8,7 @@ func _ready():
 	player = get_parent().get_parent()
 
 func get_input_direction():
+	# builds a move vector from player inputs and returns it
 	var input_direction = Vector2()
 	input_direction.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	input_direction.y -= int(Input.get_action_strength("ui_up")) - int(Input.get_action_strength("ui_down"))
