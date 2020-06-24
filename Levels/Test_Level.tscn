@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
+[ext_resource path="res://Enemies/Witch/Witch.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Start_Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/Speedster/Speed_Enemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/Hacking_Chip/Chip.tscn" type="PackedScene" id=5]
@@ -28,3 +29,6 @@ position = Vector2( 729.973, 113.876 )
 
 [node name="Speed_Enemy2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 260.374, 559.238 )
+
+[node name="Witch" parent="." instance=ExtResource( 1 )]
+position = Vector2( 351.264, 247.599 )

@@ -1,14 +1,19 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Enemies/Witch/Witch.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Player_Sprites/witch_boss.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Weapons/lightning_0.png" type="Texture" id=3]
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 19.3315, 260.415 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 264.252, 21.1905 )
+
+[sub_resource type="CircleShape2D" id=1]
 radius = 158.805
 
-[sub_resource type="Animation" id=1]
-resource_name = "Idle"
+[sub_resource type="Animation" id=2]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -28,7 +33,7 @@ resource_name = "lightning"
 length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Lightning:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -40,7 +45,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite/Sprite:frame")
+tracks/1/path = NodePath("Lightning/Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -52,7 +57,7 @@ tracks/1/keys = {
 "values": [ 1, 2, 3, 4, 5, 6, 7, 1 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:rotation_degrees")
+tracks/2/path = NodePath("Lightning:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -73,24 +78,48 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Lightning" type="Sprite" parent="."]
 visible = false
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 3 )
 hframes = 8
 
-[node name="Sprite" type="Sprite" parent="Sprite"]
+[node name="Sprite" type="Sprite" parent="Lightning"]
 rotation = 1.5708
 texture = ExtResource( 3 )
 hframes = 8
 frame = 1
 
+[node name="Area2D" type="Area2D" parent="Lightning"]
+collision_layer = 0
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lightning/Area2D"]
+shape = SubResource( 4 )
+
+[node name="Area2D2" type="Area2D" parent="Lightning"]
+collision_layer = 0
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lightning/Area2D2"]
+shape = SubResource( 5 )
+
 [node name="Player_Detection" type="Area2D" parent="."]
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Detection"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Idle = SubResource( 1 )
+anims/Idle = SubResource( 2 )
 anims/lightning = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="Line2D" type="Line2D" parent="."]
+[connection signal="body_entered" from="Lightning/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Lightning/Area2D2" to="." method="_on_Area2D2_body_entered"]
+[connection signal="body_entered" from="Player_Detection" to="." method="_on_Player_Detection_body_entered"]
+[connection signal="body_exited" from="Player_Detection" to="." method="_on_Player_Detection_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -15,3 +15,6 @@ func _on_HurtBox_area_entered(_area):
 # relays the Damage handling to the StateMachine
 func take_damage(dmg : int, enemy: Node)->void:
 	emit_signal("got_hit",dmg, enemy)
+
+func _process(delta):
+	print(health)
