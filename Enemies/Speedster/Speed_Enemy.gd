@@ -1,8 +1,10 @@
 extends KinematicBody2D
 
 var see_player = false
-var player
+var player : Node
 var attack_ready = true;
+
+signal got_hit
 
 const MAX_HEALTH = 3;
 const MAX_SPEED = 500

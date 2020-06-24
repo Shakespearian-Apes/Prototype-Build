@@ -13,9 +13,8 @@ func _ready():
 	pass # Replace with function body.
 
 
+#gets called from the PlayerStateMachine to let the root know who the player node is
 func set_player(node : Node) -> void:
-	"""gets called from the PlayerStateMachine to let the root know who the player node is
-	"""
 	print(node)
 	player_node = node
 	emit_signal("setPlayer")

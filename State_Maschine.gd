@@ -19,9 +19,7 @@ onready var states_map = {
 func _ready():
 	current_state = $Idle
 	_change_state('idle')
-	root.connect("playerDead", self, "dead_player")
-	root.connect("setPlayer", self, "new_player")
-	parent.connect("gotDamage", self, "take_damage")
+	parent.connect("got_hit", self, "take_damage")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

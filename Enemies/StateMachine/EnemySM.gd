@@ -1,9 +1,14 @@
 extends "res://State_Maschine.gd"
 class_name EnemyStateMachine
 # handles enemy Specific States and functions
-var noplayer = false
+var noplayer : bool = false
 
 
+func _ready():
+	# adds enemy unique states
+	states_map['player_dead'] = $PlayerDead
+	root.connect("setPlayer", self, "new_player")
+	root.connect("playerDead", self, "dead_player")
 
 func dead_player(node):
 	noplayer = true
@@ -15,3 +20,7 @@ func dead_player(node):
 
 func new_player():
 	noplayer = false
+
+
+func take_damage(dmg: int, enemy :Node)->void:
+	pass

@@ -1,6 +1,8 @@
 extends "EnemyState.gd"
 
 func update_process(machine, delta):
+	if parent.noplayer:
+		machine._change_state("playerdead")
 	if not this_enemy.see_player:
 		machine._change_state("idle")
 	var player_position = player.get_global_position()
