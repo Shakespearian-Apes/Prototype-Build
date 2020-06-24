@@ -10,7 +10,7 @@ var hit : bool = false
 var current_state = "idle"
 
 onready var animation_player = $AnimationPlayer
-
+onready var parent = get_parent().get_parent()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_physics_process(false)
@@ -40,13 +40,13 @@ func _physics_process(_delta):
 			return
 		if is_owner(body):
 			return
-		body.take_damage(damage, get_parent())
+		body.take_damage(damage, parent)
 		hit = true 
 	set_physics_process(false)
 
 # small check just to dont kill your self with it
 func is_owner(node):
-	return node == get_parent()
+	return node == parent
 
 func _on_AnimationPlayer_animation_finished(name):
 	if name == "attack":

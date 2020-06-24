@@ -13,7 +13,7 @@ onready var root : Node = get_node("/root/Root")
 onready var states_map = {
 	'idle' : $Idle,
 	'walk': $Walk,
-	# 'jump': $Jump
+	'dead': $Dead
 }
 
 func _ready():

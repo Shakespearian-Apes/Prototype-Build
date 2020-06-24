@@ -16,3 +16,5 @@ script = ExtResource( 3 )
 
 [node name="PlayerDead" type="Node" parent="."]
 script = ExtResource( 4 )
+
+[node name="Dead" type="Node" parent="."]
