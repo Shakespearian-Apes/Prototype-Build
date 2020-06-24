@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "EnemyState",
+"language": "GDScript",
+"path": "res://Enemies/StateMachine/EnemyState.gd"
+}, {
+"base": "Node",
 "class": "EnemyStateMachine",
 "language": "GDScript",
 "path": "res://Enemies/StateMachine/EnemySM.gd"
@@ -35,6 +40,7 @@ _global_script_classes=[ {
 "path": "res://State_Maschine.gd"
 } ]
 _global_script_class_icons={
+"EnemyState": "",
 "EnemyStateMachine": "",
 "PlayerState": "",
 "PlayerStateMachine": "",
