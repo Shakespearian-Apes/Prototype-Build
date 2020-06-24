@@ -10,6 +10,9 @@ func _ready():
 	root.connect("setPlayer", self, "new_player")
 	root.connect("playerDead", self, "dead_player")
 
+# when the signal is emited that the player is dead
+# this function checks if the parent was the killer and adds the players statemachine
+# as a way to take over at the moment
 func dead_player(node):
 	noplayer = true
 	if get_parent() == node:
@@ -18,6 +21,7 @@ func dead_player(node):
 		get_parent().add_child(state_inst)
 		queue_free()
 
+# sets a flag to let enemies out of the player dead state
 func new_player():
 	noplayer = false
 

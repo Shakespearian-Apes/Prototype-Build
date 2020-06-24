@@ -40,12 +40,11 @@ func _physics_process(_delta):
 			return
 		if is_owner(body):
 			return
-		print("test")
 		body.take_damage(damage, get_parent())
 		hit = true 
-	print("test2")
 	set_physics_process(false)
 
+# small check just to dont kill your self with it
 func is_owner(node):
 	return node == get_parent()
 
