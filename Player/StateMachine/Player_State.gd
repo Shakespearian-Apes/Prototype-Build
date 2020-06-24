@@ -14,5 +14,7 @@ func get_input_direction():
 	input_direction.y -= int(Input.get_action_strength("ui_up")) - int(Input.get_action_strength("ui_down"))
 	return input_direction
 
+func get_input_attack():
+	return Input.is_action_pressed("ui_select")
 # func move_player():
 # 	velocity = player.move_and_slide(velocity)

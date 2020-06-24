@@ -11,6 +11,7 @@ var current_state = "idle"
 
 onready var animation_player = $AnimationPlayer
 onready var parent = get_parent().get_parent()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_physics_process(false)
