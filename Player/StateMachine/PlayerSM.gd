@@ -2,6 +2,7 @@ extends "res://State_Maschine.gd"
 class_name PlayerStateMachine
 
 func _ready():
+	
 	root.set_player(get_parent())
 
 
@@ -10,6 +11,7 @@ func take_damage(damage:int, inc:Node ):
 	if inc == parent:
 		return
 	parent.health -= damage
+	root.get_node("Hud").lost_health()
 	if parent.health < 1:
 		player_dead(inc)
 
