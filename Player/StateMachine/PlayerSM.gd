@@ -6,10 +6,12 @@ func _ready():
 
 
 # gets called from the weapon script to apply health reduction
-func take_damage(damage:int, enemy:Node ):
+func take_damage(damage:int, inc:Node ):
+	if inc == parent:
+		return
 	parent.health -= damage
 	if parent.health < 1:
-		player_dead(enemy)
+		player_dead(inc)
 
 # handles everything to handle the player take over
 func player_dead(enemy : Node):

@@ -21,6 +21,10 @@ func dead_player(node):
 func new_player():
 	noplayer = false
 
-
-func take_damage(dmg: int, enemy :Node)->void:
-	pass
+# handles Enemies taking Damage
+func take_damage(dmg: int, inc :Node)->void:
+	if inc == parent:
+		return
+	parent.health -= dmg
+	if parent.health < 1:
+		queue_free()

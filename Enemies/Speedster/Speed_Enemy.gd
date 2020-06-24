@@ -6,7 +6,7 @@ var attack_ready = true;
 
 signal got_hit
 
-const MAX_HEALTH = 3;
+const MAX_HEALTH = 4;
 const MAX_SPEED = 500
 const ACCELERATION = 100
 const FRICTION = 100
@@ -20,7 +20,6 @@ func _ready():
 
 #checks if body that enters Detection is the Player
 func detection_entered(body : Node):
-	print(body)
 	if body == root.player_node:
 		see_player = true
 
@@ -29,7 +28,7 @@ func detection_exited(body : Node):
 	if see_player and (body == root.player_node):
 		see_player = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	pass
 	# player = get_node_or_null("../../Player_Root").get_child(0)
 	# set_animation()
