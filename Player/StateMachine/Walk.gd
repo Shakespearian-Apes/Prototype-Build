@@ -4,7 +4,7 @@ func update_process(machine, delta):
 	var input_direction = get_input_direction()
 	if not input_direction:
 		machine._change_state('idle')
-	velocity = input_direction.normalized() * player.get_parent().MAX_SPEED
+	velocity = input_direction.normalized() * player.MAX_SPEED
 	velocity = player.move_and_slide(velocity)
 
 	##enemys are missing these animation

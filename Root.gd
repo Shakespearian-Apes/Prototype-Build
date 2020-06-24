@@ -4,7 +4,7 @@ extends Node
 signal setPlayer
 signal playerDead
 
-var player_node
+var player_node : Node
 
 
 
@@ -13,9 +13,12 @@ func _ready():
 	pass # Replace with function body.
 
 
-func set_player(new):
-	player_node = new
-	emit_signal("setPlayer", player_node)
+func set_player(node : Node) -> void:
+	"""gets called from the PlayerStateMachine to let the root know who the player node is
+	"""
+	print(node)
+	player_node = node
+	emit_signal("setPlayer")
 
-func player_dead(node):
+func player_dead(node) -> void:
 	emit_signal("playerDead", node)
