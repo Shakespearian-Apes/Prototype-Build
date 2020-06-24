@@ -1,18 +1,17 @@
 extends "Player_State.gd"
 
+func enter(_machine):
+	animated_sprite.play("walk")
+
 func update_process(machine, delta):
 	var input_direction = get_input_direction()
+	if get_input_attack():
+		player.attack()
 	if not input_direction:
 		machine._change_state('idle')
-	velocity = input_direction.normalized() * player.get_parent().MAX_SPEED
-	velocity = player.move_and_slide(velocity)
-
-	##enemys are missing these animation
+	velocity = input_direction.normalized() * player.MAX_SPEED
 	if velocity.x > 0:
-		player.get_node("Sprite").flip_h = false
-		# player.get_node("AnimationPlayer").play("Walking")
+		flip.set_scale(Vector2(1,1))
 	elif velocity.x < 0:
-		player.get_node("Sprite").flip_h = true
-		# player.get_node("AnimationPlayer").play("Walking")
-	# elif velocity.y != 0:
-		# player.get_node("AnimationPlayer").play("Walking")
+		flip.set_scale(Vector2(-1,1))
+	velocity = player.move_and_slide(velocity)

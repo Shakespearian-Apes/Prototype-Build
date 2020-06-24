@@ -1,12 +1,21 @@
 extends "EnemyState.gd"
 
+func enter(_machine):
+	animated_sprite.play("walk")
+
 func update_process(machine, delta):
-	if not enemy.see_player:
+	if parent.noplayer:
+		machine._change_state("playerdead")
+	if not this_enemy.see_player:
 		machine._change_state("idle")
 	var player_position = player.get_global_position()
-	var enemy_position = enemy.get_global_position()
+	var enemy_position = this_enemy.get_global_position()
 	var velocity = (player_position - enemy_position).normalized()
 	if enemy_position.distance_to(player_position) <= 50:
-		enemy.attack()
+		this_enemy.attack()
 	else:
-		enemy.move_and_slide(velocity * 200)
+		if velocity.x > 0:
+			flip.set_scale(Vector2(1,1))
+		elif velocity.x < 0:
+			flip.set_scale(Vector2(-1,1))
+		this_enemy.move_and_slide(velocity * 200)

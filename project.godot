@@ -10,6 +10,16 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "EnemyState",
+"language": "GDScript",
+"path": "res://Enemies/StateMachine/EnemyState.gd"
+}, {
+"base": "Node",
+"class": "EnemyStateMachine",
+"language": "GDScript",
+"path": "res://Enemies/StateMachine/EnemySM.gd"
+}, {
+"base": "Node",
 "class": "PlayerState",
 "language": "GDScript",
 "path": "res://Player/StateMachine/Player_State.gd"
@@ -18,10 +28,24 @@ _global_script_classes=[ {
 "class": "PlayerStateMachine",
 "language": "GDScript",
 "path": "res://Player/StateMachine/PlayerSM.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://State.gd"
+}, {
+"base": "Node",
+"class": "StateMaschine",
+"language": "GDScript",
+"path": "res://State_Maschine.gd"
 } ]
 _global_script_class_icons={
+"EnemyState": "",
+"EnemyStateMachine": "",
 "PlayerState": "",
-"PlayerStateMachine": ""
+"PlayerStateMachine": "",
+"State": "",
+"StateMaschine": ""
 }
 
 [application]
@@ -32,7 +56,7 @@ config/icon="res://icon.png"
 
 [layer_names]
 
-2d_physics/layer_1="Player"
+2d_physics/layer_1="Charackter"
 2d_physics/layer_2="Enviornment"
 2d_physics/layer_3="Enemies"
 2d_physics/layer_4="Player Detection"
