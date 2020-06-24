@@ -22,8 +22,7 @@ extents = Vector2( 61.1938, 62.0497 )
 "character",
 ]]
 scale = Vector2( 0.3, 0.3 )
-collision_layer = 4
-collision_mask = 4
+collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -55,7 +54,6 @@ shape = SubResource( 2 )
 [node name="Player_Detection" type="Area2D" parent="."]
 visible = false
 collision_layer = 16
-collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Detection"]
 shape = SubResource( 3 )
@@ -73,5 +71,3 @@ shape = SubResource( 4 )
 [node name="Sword" parent="." instance=ExtResource( 5 )]
 position = Vector2( 65, 4 )
 scale = Vector2( 3, 3 )
-[connection signal="area_entered" from="Player_Detection" to="." method="_on_Player_Detection_area_entered"]
-[connection signal="area_exited" from="Player_Detection" to="." method="_on_Player_Detection_area_exited"]

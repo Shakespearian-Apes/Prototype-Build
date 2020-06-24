@@ -11,15 +11,23 @@ const MAX_SPEED = 500
 const ACCELERATION = 100
 const FRICTION = 100
 onready var health = MAX_HEALTH
-
-func _on_Player_Detection_area_entered(area):
-	see_player = true
+onready var root = get_node("/root/Root")
 
 func _ready():
+	$Player_Detection.connect("body_entered", self , "detection_entered")
+	$Player_Detection.connect("body_exited", self , "detection_exited")
 	$Sword.connect("AttackFinished", self, "reset_attack")
 
-func _on_Player_Detection_area_exited(area):
-	see_player = false
+#checks if body that enters Detection is the Player
+func detection_entered(body : Node):
+	print(body)
+	if body == root.player_node:
+		see_player = true
+
+#checks if the body that is leavin the Area is the Player
+func detection_exited(body : Node):
+	if see_player and (body == root.player_node):
+		see_player = false
 
 func _physics_process(delta):
 	pass
