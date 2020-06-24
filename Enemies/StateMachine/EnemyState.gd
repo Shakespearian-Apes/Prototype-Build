@@ -1,4 +1,6 @@
 extends "res://State.gd"
+# State for enemy States extends from
+# offers some functions per inheritance
 
 
 var player
