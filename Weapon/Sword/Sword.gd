@@ -5,6 +5,7 @@ signal AttackFinished
 export(int) var damage = 1
 
 
+var hit : bool = false
 # enum STATES {IDLE, ATTACK}
 var current_state = "idle"
 
@@ -28,7 +29,9 @@ func _change_state(new_state):
 			set_physics_process(true)
 			animation_player.play("attack")
 
-func _physics_process(delta):
+func _physics_process(_delta):
+	if hit:
+		return
 	var overlapping_bodies = get_overlapping_bodies()
 	if not overlapping_bodies:
 		return
@@ -37,7 +40,10 @@ func _physics_process(delta):
 			return
 		if is_owner(body):
 			return
+		print("test")
 		body.take_damage(damage, get_parent())
+		hit = true 
+	print("test2")
 	set_physics_process(false)
 
 func is_owner(node):
@@ -46,4 +52,5 @@ func is_owner(node):
 func _on_AnimationPlayer_animation_finished(name):
 	if name == "attack":
 		_change_state("idle")
+		hit = false
 		emit_signal("AttackFinished")
