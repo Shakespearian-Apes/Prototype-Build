@@ -1,5 +1,8 @@
 extends "EnemyState.gd"
 
+func enter(_machine):
+	animated_sprite.play("walk")
+
 func update_process(machine, delta):
 	if parent.noplayer:
 		machine._change_state("playerdead")
@@ -11,4 +14,8 @@ func update_process(machine, delta):
 	if enemy_position.distance_to(player_position) <= 50:
 		this_enemy.attack()
 	else:
+		if velocity.x > 0:
+			flip.set_scale(Vector2(1,1))
+		elif velocity.x < 0:
+			flip.set_scale(Vector2(-1,1))
 		this_enemy.move_and_slide(velocity * 200)

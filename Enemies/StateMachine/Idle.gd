@@ -1,5 +1,7 @@
 extends "EnemyState.gd"
 
+func enter(_machine):
+	animated_sprite.play("idle")
 
 func update_process(machine, delta):
 	if parent.noplayer:

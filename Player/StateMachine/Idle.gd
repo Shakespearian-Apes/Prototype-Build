@@ -1,7 +1,8 @@
 extends "Player_State.gd"
 
-func enter(machine):
-	pass
+func enter(_machine):
+	animated_sprite.play("idle")
+
 
 func update_process(machine, delta):
 	# gets called as part of _process and checks if the player moves to then change state
@@ -9,4 +10,3 @@ func update_process(machine, delta):
 	if input_direction:
 		machine._change_state('walk')
 	## enemys dont have this animation
-	# player.get_node("AnimationPlayer").play("idle")

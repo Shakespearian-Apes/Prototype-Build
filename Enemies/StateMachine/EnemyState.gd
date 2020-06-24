@@ -5,13 +5,12 @@ class_name EnemyState
 
 
 var player
-var this_enemy
+onready var this_enemy = parent.get_parent()
 
 onready var root : Node = get_node("/root/Root")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	this_enemy = get_parent().get_parent()
 	root.connect("setPlayer", self, "set_player_node")
 	set_player_node()
 
