@@ -36,11 +36,12 @@ func _change_state(new_state):
 func _shoot()->void:
 	var bullet_instance : RigidBody2D = bullet.instance()
 	bullet_instance.position = $BulletSpawn.global_position
-	print(bullet_instance.position)
-	print($BulletSpawn.global_position)
 	var direction = parent.get_node("Flip").get_scale()
+	bullet_instance.set_scale(direction)
 	bullet_instance.apply_central_impulse(Vector2(direction.x * bullet_speed , 0))
-	parent.add_child(bullet_instance)
+	bullet_instance.damage = damage
+	bullet_instance.creator = parent
+	get_node("/root/Root").add_child(bullet_instance)
 
 func _physics_process(_delta):
 	if hit:

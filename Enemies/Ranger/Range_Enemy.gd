@@ -35,6 +35,7 @@ func attack()->void:
 	if not attack_ready:
 		return
 	rifle._change_state("attack")
+	attack_ready = false
 	# $AnimationPlayer.play("attack")
 
 func reset_attack()->void:

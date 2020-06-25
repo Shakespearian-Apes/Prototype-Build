@@ -2,14 +2,19 @@ extends RigidBody2D
 
 const PROJECTILE_SPEED = 600
 
+var damage
+var creator
 var velocity : Vector2 = Vector2.ZERO
 
+func _ready():
+	connect("body_entered", self, "_on_impact")
 
-func _physics_process(delta):
-	var bodies = get_colliding_bodies()
-	if not bodies:
-		return
-	print(bodies)
+# func _physics_process(delta):
+# 	var collide = get_colliding_bodies()
+	
 
-func _on_impact(normal : Vector2):
-	pass
+func _on_impact(body : Node):
+	print(creator)
+	if body.is_in_group("character"):
+		body.take_damage(damage, creator)
+	queue_free()

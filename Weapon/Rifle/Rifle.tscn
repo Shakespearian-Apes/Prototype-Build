@@ -32,3 +32,5 @@ position = Vector2( 17.0515, -0.34103 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 1 )
+
+[node name="FireRate" type="Timer" parent="."]

@@ -29,6 +29,8 @@ func new_player():
 func take_damage(dmg: int, inc :Node)->void:
 	if inc == parent:
 		return
+	if inc != root.player_node:
+		return
 	parent.health -= dmg
 	if parent.health < 1:
 		queue_free()
