@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/Player_Sprites/witch_fighter.png" type="Texture" id=1]
 [ext_resource path="res://Player/Start_Player.gd" type="Script" id=2]
@@ -26,64 +26,59 @@ region = Rect2( 32, 0, 32, 32 )
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 320, 0, 32, 32 )
+region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 64, 0, 32, 32 )
+region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 96, 0, 32, 32 )
+region = Rect2( 320, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=18]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 128, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=19]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 160, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=20]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 192, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=21]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 224, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=22]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 256, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=14]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 288, 0, 32, 32 )
-
-[sub_resource type="SpriteFrames" id=15]
+[sub_resource type="SpriteFrames" id=17]
 animations = [ {
-"frames": [ SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 6 ) ],
+"frames": [ SubResource( 8 ) ],
 "loop": true,
 "name": "death",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": true,
 "name": "walk",
-"speed": 5.0
+"speed": 15.0
 } ]
 
 [node name="Start_Player" type="KinematicBody2D" groups=[
@@ -118,7 +113,7 @@ shape = SubResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Flip"]
 scale = Vector2( 2, 2 )
-frames = SubResource( 15 )
+frames = SubResource( 17 )
 animation = "idle"
 frame = 1
 
