@@ -30,6 +30,9 @@ func set_player(node : Node) -> void:
 
 # emits a signal for everyone and starts the takeover script
 func player_dead(node: KinematicBody2D) -> void:
+	revive -= 1
+	if revive < 1:
+		gameover = true
 	emit_signal("playerDead", node)
 
 
