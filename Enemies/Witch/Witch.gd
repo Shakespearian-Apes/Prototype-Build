@@ -1,7 +1,8 @@
 extends Sprite
 
 var is_attacking = false
-onready var player = get_node_or_null("../Start_Player")
+onready var root : Node= get_node("/root/Root")
+onready var player : KinematicBody2D = root.player_node
 
 func _ready():
 	$AnimationPlayer.play("Idle")
@@ -41,8 +42,8 @@ func random():
 
 
 func _on_Area2D_body_entered(body):
-	player.health -= 1
+	body.take_damage(1, self)
 
 
 func _on_Area2D2_body_entered(body):
-	player.health -= 1
+	body.take_damage(1, self)

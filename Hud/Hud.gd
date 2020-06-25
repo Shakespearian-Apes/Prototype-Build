@@ -13,7 +13,7 @@ func _ready():
 	set_health_container()
 
 # adds full Hearts to the VerticalContainer
-func set_health_container():
+func set_health_container()->void:
 	var i = 0
 	var hearts = root.player_node.MAX_HEALTH
 	while i < hearts:
@@ -23,14 +23,14 @@ func set_health_container():
 		i+=1
 
 #Emptys the Container so it doesnt show more Hearts as it should
-func reset_health_container(_node):
+func reset_health_container(_node : Node)->void:
 	var hearts = heart_row.get_children()
 	for heart in hearts:
 		heart.queue_free()
 	set_health_container()
 
 #replaces the full heart containers with empty ones
-func lost_health():
+func lost_health()->void:
 	var hearts = heart_row.get_children()
 	for heart in hearts:
 		if heart.get_texture() == full_heart_name:

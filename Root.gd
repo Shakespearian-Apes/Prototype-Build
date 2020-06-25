@@ -4,7 +4,7 @@ extends Node
 signal setPlayer
 signal playerDead
 
-var player_node : Node
+var player_node : KinematicBody2D
 
 onready var entitys : Node = $Test_Level.get_node("Entitys")
 
@@ -31,4 +31,5 @@ func _process(_delta):
 		var witch_scene : PackedScene = load("res://Enemies/Witch/Witch.tscn")
 		var witch : Sprite  = witch_scene.instance()
 		witch.position = $Test_Level.get_node("WitchSpawn").global_position
+		player_node.position = $Test_Level.get_node("PlayerSpawn").global_position
 		entitys.add_child(witch)

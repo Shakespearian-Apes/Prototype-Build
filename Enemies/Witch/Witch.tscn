@@ -70,6 +70,7 @@ tracks/2/keys = {
 
 [node name="Witch" type="Sprite"]
 position = Vector2( 330.737, 224.298 )
+scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 hframes = 4
 script = ExtResource( 1 )
