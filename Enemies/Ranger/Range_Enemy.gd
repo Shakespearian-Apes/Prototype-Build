@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var min_attack_dist :int = 50
+export var min_attack_dist :int = 150
 
 var see_player = false
 var player : Node
@@ -8,18 +8,18 @@ var attack_ready = true;
 
 signal got_hit
 
-const MAX_HEALTH = 4;
-const MAX_SPEED = 500
+const MAX_HEALTH = 2;
+const MAX_SPEED = 400
 const ACCELERATION = 100
 const FRICTION = 100
 onready var health = MAX_HEALTH
 onready var root = get_node("/root/Root")
-onready var sword = $Flip.get_node("Sword")
+onready var rifle = $Flip.get_node("Rifle")
 
 func _ready():
 	$Player_Detection.connect("body_entered", self , "detection_entered")
 	$Player_Detection.connect("body_exited", self , "detection_exited")
-	sword.connect("AttackFinished", self, "reset_attack")
+	rifle.connect("AttackFinished", self, "reset_attack")
 
 #checks if body that enters Detection is the Player
 func detection_entered(body : Node)->void:
@@ -34,7 +34,7 @@ func detection_exited(body : Node)->void:
 func attack()->void:
 	if not attack_ready:
 		return
-	sword._change_state("attack")
+	rifle._change_state("attack")
 	# $AnimationPlayer.play("attack")
 
 func reset_attack()->void:
