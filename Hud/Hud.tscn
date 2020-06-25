@@ -2,15 +2,17 @@
 
 [ext_resource path="res://Hud/Hud.gd" type="Script" id=1]
 
-[node name="Hud" type="VBoxContainer"]
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="HudV" type="VBoxContainer" parent="."]
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 234.0
 margin_bottom = 72.0
-script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="HeartRow" type="HBoxContainer" parent="."]
+[node name="HeartRow" type="HBoxContainer" parent="HudV"]
 margin_right = 214.0

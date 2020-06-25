@@ -17,6 +17,7 @@ func _ready():
 func set_player(node : Node) -> void:
 	print(node)
 	player_node = node
+	player_node.get_node("Camera").current = true
 	emit_signal("setPlayer")
 
 func player_dead(node) -> void:
