@@ -1,15 +1,13 @@
 extends Sprite
 
+const MAX_HEALTH = 5
 var is_attacking = false
+onready var health :int = MAX_HEALTH
 onready var root : Node= get_node("/root/Root")
 onready var player : KinematicBody2D = root.player_node
 
 func _ready():
 	$AnimationPlayer.play("Idle")
-
-func _process(delta):
-	pass
-
 
 func _on_Player_Detection_body_entered(body):
 	$Timer.start()
@@ -47,3 +45,10 @@ func _on_Area2D_body_entered(body):
 
 func _on_Area2D2_body_entered(body):
 	body.take_damage(1, self)
+
+# weapons call this function on a body they detect
+func take_damage(dmg : int, _attacker: Node)->void:
+	health -= dmg
+	if health < 1:
+		root.win = true
+		queue_free()
