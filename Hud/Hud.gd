@@ -6,8 +6,11 @@ var full_heart = load("res://Hud/FullHeart.tscn")
 var full_heart_name
 var empty_heart = load("res://Hud/EmptyHeart.tscn")
 var empty_heart_name
+var full_ankh = load("res://Hud/FullAnkh.tscn")
+var empty_ankh = load("res://Hud/EmptyAnkh.tscn")
 onready var root = get_parent()
 onready var heart_row = $HudV.get_node("HeartRow")
+onready var revive_row = $HudV.get_node("ReviveRow")
 onready var title_screen : TextureRect= $TitleScreen
 
 # Called when the node enters the scene tree for the first time.
@@ -28,6 +31,7 @@ func set_health_container()->void:
 
 #Emptys the Container so it doesnt show more Hearts as it should
 func reset_health_container(_node : Node)->void:
+	_lost_revive()
 	var hearts = heart_row.get_children()
 	for heart in hearts:
 		heart.queue_free()
@@ -43,9 +47,24 @@ func lost_health()->void:
 			heart_row.add_child(empty)
 			return
 
+#set start revive icons
+func _set_revives()->void:
+	var i = 0
+	while i < root.revive:
+		var ankh = full_ankh.instance()
+		revive_row.add_child(ankh)
+		i+=1
+
+#removes first child and replaces it with new icon
+func _lost_revive()->void:
+	revive_row.get_child(0).queue_free()
+	var ankh = empty_ankh.instance()
+	revive_row.add_child(ankh)
+
 #gets Called when user pressed start emits signal to the root
 func pressed_start()->void:
 	title_screen.visible = false
+	_set_revives()
 	emit_signal("game_start")
 
 #gets called on press quit and does just that

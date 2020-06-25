@@ -18,5 +18,4 @@ func take_damage(damage:int, inc:Node )->void:
 # handles everything to handle the player take over
 func player_dead(enemy : Node)->void:
 	root.player_dead(enemy)
-	print("test")
 	parent.queue_free()
