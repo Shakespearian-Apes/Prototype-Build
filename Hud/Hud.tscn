@@ -20,6 +20,11 @@ __meta__ = {
 [node name="HeartRow" type="HBoxContainer" parent="HudV"]
 margin_right = 214.0
 
+[node name="ReviveRow" type="HBoxContainer" parent="HudV"]
+margin_top = 4.0
+margin_right = 214.0
+margin_bottom = 4.0
+
 [node name="TitleScreen" type="TextureRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
