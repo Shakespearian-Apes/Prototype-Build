@@ -8,6 +8,7 @@ var player_node : KinematicBody2D
 var win : bool = false
 var gameover : bool = false
 var boss : bool = false
+var can_move : bool = false
 
 onready var entitys : Node = $Test_Level.get_node("Entitys")
 
@@ -15,17 +16,18 @@ onready var entitys : Node = $Test_Level.get_node("Entitys")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Hud.connect("game_start", self, "_game_start")
 	pass # Replace with function body.
 
 
 #gets called from the PlayerStateMachine to let the root know who the player node is
 func set_player(node : Node) -> void:
-	print(node)
 	player_node = node
 	player_node.get_node("Camera").current = true
 	emit_signal("setPlayer")
 
-func player_dead(node) -> void:
+# emits a signal for everyone and starts the takeover script
+func player_dead(node: KinematicBody2D) -> void:
 	emit_signal("playerDead", node)
 
 
@@ -47,3 +49,11 @@ func _process(_delta):
 		player_node.position = $Test_Level.get_node("PlayerSpawn").global_position
 		boss = true
 		entitys.add_child(witch)
+
+#used to init the start_player
+func _game_start()->void:
+	var player_scene : PackedScene = load("res://Player/Start_Player.tscn")
+	var player : KinematicBody2D = player_scene.instance()
+	player.global_position = $Test_Level.get_node("StartSpawn").global_position
+	entitys.add_child(player)
+	$Hud.set_health_container()

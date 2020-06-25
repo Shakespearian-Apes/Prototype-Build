@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Hud/Hud.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Misc/titlescreen.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Misc/start.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Misc/quit.png" type="Texture" id=4]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -16,3 +19,34 @@ __meta__ = {
 
 [node name="HeartRow" type="HBoxContainer" parent="HudV"]
 margin_right = 214.0
+
+[node name="TitleScreen" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -320.0
+margin_top = -240.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="TextureButton" parent="TitleScreen"]
+margin_left = 117.604
+margin_top = 93.0494
+margin_right = 217.604
+margin_bottom = 143.049
+texture_normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="TextureButton" parent="TitleScreen"]
+margin_left = 118.25
+margin_top = 153.144
+margin_right = 218.25
+margin_bottom = 203.144
+texture_normal = ExtResource( 4 )
