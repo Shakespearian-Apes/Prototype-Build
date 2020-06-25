@@ -9,7 +9,7 @@ func update_process(machine, _delta):
 	var player_position = player.get_global_position()
 	var enemy_position = this_enemy.get_global_position()
 	var velocity = (player_position - enemy_position).normalized()
-	if enemy_position.distance_to(player_position) <= 50:
+	if enemy_position.distance_to(player_position) <= this_enemy.min_attack_dist:
 		this_enemy.attack()
 	else:
 		if velocity.x > 0:
