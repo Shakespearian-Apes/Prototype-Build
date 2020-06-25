@@ -14,6 +14,7 @@ onready var title_screen : TextureRect= $TitleScreen
 func _ready():
 	root.connect("playerDead", self, "reset_health_container")
 	title_screen.get_node("Start").connect("pressed", self, "pressed_start")
+	title_screen.get_node("Quit").connect("pressed", self, "pressed_quit")
 
 # adds full Hearts to the VerticalContainer
 func set_health_container()->void:
@@ -42,6 +43,11 @@ func lost_health()->void:
 			heart_row.add_child(empty)
 			return
 
-func pressed_start():
+#gets Called when user pressed start emits signal to the root
+func pressed_start()->void:
 	title_screen.visible = false
 	emit_signal("game_start")
+
+#gets called on press quit and does just that
+func pressed_quit():
+	get_tree().quit()
