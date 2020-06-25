@@ -3,9 +3,7 @@ extends "EnemyState.gd"
 func enter(_machine):
 	animated_sprite.play("walk")
 
-func update_process(machine, delta):
-	if parent.noplayer:
-		machine._change_state("playerdead")
+func update_process(machine, _delta):
 	if not this_enemy.see_player:
 		machine._change_state("idle")
 	var player_position = player.get_global_position()

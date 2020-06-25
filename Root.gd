@@ -23,11 +23,13 @@ func _ready():
 #gets called from the PlayerStateMachine to let the root know who the player node is
 func set_player(node : Node) -> void:
 	player_node = node
+	print("test5")
 	player_node.get_node("Camera").current = true
 	emit_signal("setPlayer")
 
 # emits a signal for everyone and starts the takeover script
 func player_dead(node: KinematicBody2D) -> void:
+	print(node)
 	emit_signal("playerDead", node)
 
 
