@@ -4,16 +4,16 @@
 [ext_resource path="res://Assets/Player_Sprites/witch_boss.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Weapons/lightning_0.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 19.3315, 260.415 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 264.252, 21.1905 )
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=3]
 radius = 158.805
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=4]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -28,8 +28,7 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "lightning"
+[sub_resource type="Animation" id=5]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -95,24 +94,24 @@ collision_layer = 0
 collision_mask = 33
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lightning/Area2D"]
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="Area2D2" type="Area2D" parent="Lightning"]
 collision_layer = 0
 collision_mask = 33
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lightning/Area2D2"]
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 
 [node name="Player_Detection" type="Area2D" parent="."]
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Detection"]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Idle = SubResource( 2 )
-anims/lightning = SubResource( 3 )
+anims/Idle = SubResource( 4 )
+anims/lightning = SubResource( 5 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.5

@@ -140,3 +140,4 @@ animation = "death"
 position = Vector2( 19.9815, 8.62746 )
 
 [node name="Camera" type="Camera2D" parent="."]
+visible = false
