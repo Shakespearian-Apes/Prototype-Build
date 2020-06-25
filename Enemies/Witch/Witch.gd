@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const MAX_HEALTH = 1
+const MAX_HEALTH = 5
 var start : bool = true
 var is_attacking= false
 var hit :bool = false

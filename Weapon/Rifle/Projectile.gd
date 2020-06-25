@@ -14,7 +14,6 @@ func _ready():
 	
 
 func _on_impact(body : Node):
-	print(body)
 	if body.is_in_group("character"):
 		body.take_damage(damage, creator)
 	queue_free()

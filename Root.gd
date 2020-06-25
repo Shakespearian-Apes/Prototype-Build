@@ -48,6 +48,7 @@ func _process(_delta):
 		gameover = true
 		return
 	if entitys.get_child_count() == 1:
+		MusicController.play("res://Assets/Music/song_2.ogg")
 		var witch_scene : PackedScene = load("res://Enemies/Witch/Witch.tscn")
 		var witch : KinematicBody2D  = witch_scene.instance()
 		witch.position = $Test_Level.get_node("WitchSpawn").global_position
@@ -58,6 +59,7 @@ func _process(_delta):
 #used to init the start_player
 func _game_start()->void:
 	var player_scene : PackedScene = load("res://Player/Start_Player.tscn")
+	MusicController.play("res://Assets/Music/song_1.ogg")
 	var player : KinematicBody2D = player_scene.instance()
 	player.global_position = $Test_Level.get_node("StartSpawn").global_position
 	entitys.add_child(player)

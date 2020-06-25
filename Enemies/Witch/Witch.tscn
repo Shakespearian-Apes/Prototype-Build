@@ -73,7 +73,9 @@ tracks/2/keys = {
 [sub_resource type="CircleShape2D" id=3]
 radius = 158.805
 
-[node name="Witch" type="KinematicBody2D"]
+[node name="Witch" type="KinematicBody2D" groups=[
+"character",
+]]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
