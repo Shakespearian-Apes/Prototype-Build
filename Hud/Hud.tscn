@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Hud/Hud.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Misc/titlescreen.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Misc/start.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Misc/quit.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Misc/title.png" type="Texture" id=5]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -59,3 +60,17 @@ margin_right = 122.827
 margin_bottom = 207.771
 rect_scale = Vector2( 0.5, 0.5 )
 texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="TitleScreen"]
+margin_left = 6.93983
+margin_top = 19.6628
+margin_right = 256.94
+margin_bottom = 219.663
+rect_scale = Vector2( 0.35, 0.35 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
