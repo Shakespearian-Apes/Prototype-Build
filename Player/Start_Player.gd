@@ -2,8 +2,8 @@ extends KinematicBody2D
 
 signal got_hit
 
-var health = 3
-const MAX_HEALTH = 3
+var health = 1
+const MAX_HEALTH = 1
 const MAX_SPEED = 500
 const ACCELERATION = 100
 const FRICTION = 100

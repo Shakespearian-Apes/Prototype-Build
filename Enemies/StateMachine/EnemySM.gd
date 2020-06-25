@@ -31,7 +31,6 @@ func take_damage(dmg: int, inc :Node)->void:
 		return
 	if inc != root.player_node:
 		return
-	print(parent.health)
 	parent.health -= dmg
 	if parent.health < 1:
 		parent.queue_free()

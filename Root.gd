@@ -49,7 +49,7 @@ func _process(_delta):
 		return
 	if entitys.get_child_count() == 1:
 		var witch_scene : PackedScene = load("res://Enemies/Witch/Witch.tscn")
-		var witch : Sprite  = witch_scene.instance()
+		var witch : KinematicBody2D  = witch_scene.instance()
 		witch.position = $Test_Level.get_node("WitchSpawn").global_position
 		player_node.position = $Test_Level.get_node("PlayerSpawn").global_position
 		boss = true

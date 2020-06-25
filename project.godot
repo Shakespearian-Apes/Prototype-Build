@@ -58,6 +58,10 @@ config/icon="res://icon.png"
 
 MusicController="*res://MusicController/MusicController.tscn"
 
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
 [layer_names]
 
 2d_physics/layer_1="Charackter"
