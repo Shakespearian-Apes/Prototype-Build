@@ -74,3 +74,13 @@ texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextEdit" type="TextEdit" parent="TitleScreen"]
+visible = false
+margin_left = 198.0
+margin_top = 38.0
+margin_right = 320.0
+margin_bottom = 96.0
+text = "You Won,
+and we are out 
+of Time"

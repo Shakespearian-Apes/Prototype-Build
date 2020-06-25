@@ -39,6 +39,9 @@ func player_dead(node: KinematicBody2D) -> void:
 func _process(_delta):
 	if gameover:
 		get_tree().reload_current_scene()
+	if win:
+		_winner()
+		return
 	if boss:
 		if entitys.get_child_count() > 1:
 			return
@@ -64,3 +67,7 @@ func _game_start()->void:
 	player.global_position = $Test_Level.get_node("StartSpawn").global_position
 	entitys.add_child(player)
 	$Hud.set_health_container()
+
+func _winner()->void:
+	$Hud.title_screen.visible = true
+	$Hud.title_screen.get_node("TextEdit").visible = true
