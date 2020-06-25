@@ -36,6 +36,7 @@ func player_dead(node: KinematicBody2D) -> void:
 	emit_signal("playerDead", node)
 
 
+
 func _process(_delta):
 	if gameover:
 		get_tree().reload_current_scene()
@@ -70,4 +71,8 @@ func _game_start()->void:
 
 func _winner()->void:
 	$Hud.title_screen.visible = true
-	$Hud.title_screen.get_node("TextEdit").visible = true
+	$Hud.title_screen.get_node("WonTexture").visible = true
+	$Hud.title_screen.get_node("Start").visible = false
+	$Hud.title_screen.get_node("Start").disabled = true
+	$Hud.title_screen.get_node("Quit").visible = false
+	$Hud.title_screen.get_node("Quit").disabled = true

@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Hud/Hud.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Misc/titlescreen.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Misc/start.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Misc/quit.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Misc/title.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Misc/victory.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Misc/gameover.png" type="Texture" id=7]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -75,13 +77,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextEdit" type="TextEdit" parent="TitleScreen"]
+[node name="WonTexture" type="TextureRect" parent="TitleScreen"]
 visible = false
-margin_left = 198.0
-margin_top = 38.0
-margin_right = 320.0
-margin_bottom = 96.0
-text = "You Won,
-and we are out 
-of Time.
-Plz dont judge!"
+margin_left = 224.966
+margin_top = 19.6628
+margin_right = 474.966
+margin_bottom = 219.663
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverTexture" type="TextureRect" parent="TitleScreen"]
+visible = false
+margin_left = 224.966
+margin_top = 19.6628
+margin_right = 474.966
+margin_bottom = 219.663
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
